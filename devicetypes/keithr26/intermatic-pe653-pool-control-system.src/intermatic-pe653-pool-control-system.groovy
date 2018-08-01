@@ -636,6 +636,7 @@ def parse(String description) {
 			} else {
 //				def cmd = zwave.parse(description, [0x20: 1, 0x25:1, 0x27:1, 0x31:1, 0x43:1, 0x60:3, 0x70:2, 0x81:1, 0x85:1, 0x86: 1, 0x73:1])
                 def cmd = zwave.parse(description, [0x20: 1, 0x25:1, 0x27:1, 0x31:1, 0x43:1, 0x60:3, 0x70:2, 0x72:1, 0x81:1, 0x85:2, 0x86: 1, 0x73:1, 0x91:1])
+//                def cmd = zwave.parse(description, [0x20: 1, 0x25:1, 0x27:1, 0x31:1, 0x43:1, 0x60:3, 0x70:1, 0x72:1, 0x81:1, 0x85:2, 0x86: 1, 0x73:1, 0x91:1])
                 if (debugLevel > "0") {
                     log.debug(">>>>> ${cmd} - description:$description ")
                 }
@@ -723,9 +724,9 @@ def zwaveEvent(physicalgraph.zwave.commands.versionv1.VersionReport cmd) {
 }
 
 def zwaveEvent(physicalgraph.zwave.commands.versionv1.VersionCommandClassReport cmd) {
-	if (debugLevel > "0") {
-		log.debug("VersionCommandReport cmd=${cmd}")
-	}
+//	if (debugLevel > "0") {
+	log.debug("VersionCommandReport cmd=${cmd}")
+//	}
 	if (cmd.commandClassVersion) {
     	def cls = String.format("%02X", cmd.requestedCommandClass)
         state.ccVersions[cls] = cmd.commandClassVersion
