@@ -1232,10 +1232,10 @@ private List internalConfigure() {
 	if (tempWater < 0) tempWater = 256 + tempWater
 	if (tempAir < 0)   tempAir   = 256 + tempAir
 
-    cmds << zwave.configurationV2.configurationSet(parameterNumber: 1,  size: 2, configurationValue: [operationMode1.toInteger(), opMode2.toInteger()])
+    cmds << zwave.configurationV2.configurationSet(parameterNumber: 1,  size: 4, configurationValue: [operationMode1.toInteger(), opMode2.toInteger()])
     cmds << zwave.configurationV2.configurationSet(parameterNumber: 3,  size: 4, configurationValue: [tempWater, tempAir, 0, 0])
-    cmds << zwave.configurationV2.configurationSet(parameterNumber: 19, size: 1, configurationValue: [poolSpa1.toInteger()])
-    cmds << zwave.configurationV2.configurationSet(parameterNumber: 2,  size: 1, configurationValue: [fireman.toInteger()])
+    cmds << zwave.configurationV2.configurationSet(parameterNumber: 19, size: 2, configurationValue: [poolSpa1.toInteger()])
+    cmds << zwave.configurationV2.configurationSet(parameterNumber: 2,  size: 2, configurationValue: [fireman.toInteger()])
 
 	cmds << zwave.configurationV2.configurationGet(parameterNumber: 1)
     cmds << zwave.configurationV2.configurationGet(parameterNumber: 2)
